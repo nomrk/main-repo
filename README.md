@@ -1,2 +1,2 @@
 # main-repo
-Main repository.
+Used to learn git.
