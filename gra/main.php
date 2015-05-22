@@ -4,6 +4,7 @@
 	require_once 'classes.php';
 	
 	$sqli = new sqliDatabase($db_hostname, $db_username, $db_password, $db_database);
+	$player = new players($sqli);
 	
 	if(isset($_POST['regusername']) && isset($_POST['regcharname']) &&
 				isset($_POST['regpassword'])){
@@ -11,9 +12,10 @@
 		$charname = $sqli->getPost('regcharname');
 		$password = hashPass($sqli->getPost('regpassword'));
 		
-		if(!$sqli->checkDuplicate($username, 'username')){
-			if(!$sqli->checkDuplicate($charname, 'charname')){
+		if(!$sqli->checkDuplicate($username, 'username', 'users')){
+			if(!$sqli->checkDuplicate($charname, 'charname', 'users')){
 				$sqli->registerUser($username, $charname, $password);
+				$player->createNewPlayer($username, $sqli);
 			}
 			else
 				echo "Character name taken!";
@@ -60,7 +62,7 @@
 		<form action="main.php" method="post">
 			Username: <input type="text" name="logusername" maxlength="16" size="10" required="required">
 			<br>
-			Password: <input type="text" name="logpassword" maxlength="16" size="10" required="required">
+			Password: <input type="password" name="logpassword" maxlength="16" size="10" required="required">
 			<br>
 			<input type="submit" value="Log in">
 			<br>

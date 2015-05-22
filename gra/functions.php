@@ -6,8 +6,8 @@
 		return $sanitizedString;
 	}
 	function hashPass($passToHash){
-		$salt1 = "qm&h*";
-		$salt2 = "pg!@";
+		$salt1 = "!d3o";
+		$salt2 = "r282";
 		$securePass = hash('ripemd128', "$salt1$passToHash$salt2");
 		return $securePass;
 	}
