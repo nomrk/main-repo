@@ -3,8 +3,7 @@
 	require_once 'functions.php';
 	require_once 'classes.php';
 	
-	$sqli = new sqliDatabase($db_hostname, $db_username,
-			$db_password, $db_database);
+	$sqli = new sqliDatabase($db_hostname, $db_username, $db_password, $db_database);
 	$player = new players($sqli);
 	
 	if(isset($_POST['regusername']) && isset($_POST['regcharname']) &&
@@ -51,24 +50,19 @@
 	</head>
 	<body>
 		<form action="main.php" method="post">
-			Username: <input type="text" name="regusername" 
-					maxlength="16" size="10"  required="required">
+			Username: <input type="text" name="regusername" maxlength="16" size="10"  required="required">
 			<br>
-			Charname: <input type="text" name="regcharname" 
-					maxlength="16" size="10" required="required">
+			Charname: <input type="text" name="regcharname" maxlength="16" size="10" required="required">
 			<br>
-			Password: <input type="password" name="regpassword" 
-					maxlength="16" size="10" required="required">
+			Password: <input type="password" name="regpassword" maxlength="16" size="10" required="required">
 			<br>
 			<input type="submit" value="Register">
 			<br>
 		</form>
 		<form action="main.php" method="post">
-			Username: <input type="text" name="logusername" 
-					maxlength="16" size="10" required="required">
+			Username: <input type="text" name="logusername" maxlength="16" size="10" required="required">
 			<br>
-			Password: <input type="password" name="logpassword" 
-					maxlength="16" size="10" required="required">
+			Password: <input type="password" name="logpassword" maxlength="16" size="10" required="required">
 			<br>
 			<input type="submit" value="Log in">
 			<br>

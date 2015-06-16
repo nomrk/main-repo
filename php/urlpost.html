@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>First ajax program</title>
+	<meta charset="UTF-8">
+	<script src="ajax.js"></script>
+</head>
+
+<body style="text-align: center">
+	<h1>Loading a web page into div.</h1>
+	<div id="info">
+		This sentence will be replaced, be warned!
+	</div>
+	<script>
+		param = "url=www.google.pl"
+		request = new ajaxRequest()
+		
+		request.open("POST", "urlpost.php", true)
+		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		request.setRequestHeader("Content-length", param.length)
+		request.setRequestHeader("Connection", "close")
+		
+		request.onreadystatechange = function(){
+			if(this.readyState == 4){
+				if(this.status == 200){
+					if(this.response != null){
+						document.getElementById("info").innerHTML = this.responseText
+					}
+					else
+						alert("Ajax error: No data recived")
+				}
+				else
+					alert("Ajax error: " + this.statusText)
+			}
+		}
+		
+		request.send(param)
+	</script>
+</body>
+
+</html>

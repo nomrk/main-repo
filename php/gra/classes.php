@@ -46,8 +46,7 @@
 		function loginUser($username, $password){
 			$inUser = strtolower($username);
 			$inPass = hashPass($password);
-			$query = "SELECT username, password FROM users 
-					WHERE username='$inUser'";
+			$query = "SELECT username, password FROM users WHERE username='$inUser'";
 			$result = $this->querySqli($query);
 			$row = $result->fetch_row();
 			$result->close();
@@ -70,8 +69,7 @@
 	}
 	class players{
 		function createNewPlayer($playerName, $sqliDatabase){
-			$query = "INSERT INTO characters 
-					VALUES('$playerName', '100', '100', 
+			$query = "INSERT INTO characters VALUES('$playerName', '100', '100', 
 					'5', '5', '5', '5', '0', '1')";
 			$sqliDatabase->querySqli($query);
 		}
@@ -88,8 +86,7 @@
 			}
 		}
 		function isAlive($playerName, $sqliDatabase){
-			$query = "SELECT life FROM characters 
-		WHERE charname='$playerName'";
+			$query = "SELECT life FROM characters WHERE charname='$playerName'";
 			$result = $sqliDatabase->querySqli($query);
 			$row = $result->fetch_row();
 			$result->close();

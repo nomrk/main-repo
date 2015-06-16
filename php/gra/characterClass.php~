@@ -1,0 +1,17 @@
+<?php
+	class character{
+		public $chName = "none";
+		public $level = 1;
+		public $life = 100;
+		public $mana = 100;
+		public $experience = 0;
+		
+		__construct($chName, $level, $life, $mana, $experience){
+			$this->chName = $chName;
+			$this->level = $level;
+			$this->life = $life;
+			$this->mana = $mana;
+			$this->experience = $experience;					
+		}
+	}
+?>
